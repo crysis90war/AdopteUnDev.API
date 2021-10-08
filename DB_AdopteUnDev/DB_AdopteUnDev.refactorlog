@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="c06c5f81-c9e5-49ba-a200-923c208b1b31" ChangeDateTime="10/04/2021 09:44:24">
+    <Property Name="ElementName" Value="[dbo].[Utilisateur].[SecirutyStamp]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Utilisateur]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SecurityStamp" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2745c9ba-7468-4582-a95b-8cd9ab417bef" ChangeDateTime="10/04/2021 13:45:21">
+    <Property Name="ElementName" Value="[dbo].[Competences].[Nom]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Competences]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LastName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="54673996-b5de-44d3-82c4-3c9e45f6559b" ChangeDateTime="10/04/2021 13:48:22">
+    <Property Name="ElementName" Value="[dbo].[Competences].[pas]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Competences]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="password" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a089ae75-7e15-4148-8c35-f2a759efc66c" ChangeDateTime="10/05/2021 08:12:23">
+    <Property Name="ElementName" Value="[dbo].[Contrats].[intituler]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Contrats]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Intituler" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c0722a7a-d2eb-4596-8a77-d1c20b8239b0" ChangeDateTime="10/05/2021 08:12:29">
+    <Property Name="ElementName" Value="[dbo].[Contrats].[duree]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Contrats]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Duree" />
+  </Operation>
+</Operations>
