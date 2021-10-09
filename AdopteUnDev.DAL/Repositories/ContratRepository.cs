@@ -10,11 +10,11 @@ using Tools.Connection;
 
 namespace AdopteUnDev.DAL.Repositories
 {
-    public class ContratDalRepository : IContratDalRepository
+    public class ContratRepository : IContratRepository
     {
         private readonly Connection _connection;
 
-        public ContratDalRepository(Connection connection)
+        public ContratRepository(Connection connection)
         {
             _connection = connection;
         }
@@ -40,7 +40,7 @@ namespace AdopteUnDev.DAL.Repositories
             }
         }
 
-        public void AddContrat(ContratDalEntity contrat)
+        public void AddContrat(ContratEntity contrat)
         {
             Command command = new Command("spAddContrat", true);
             command.AddParameter("Intituler", contrat.Intituler);

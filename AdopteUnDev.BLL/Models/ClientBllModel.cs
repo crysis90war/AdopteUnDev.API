@@ -15,25 +15,5 @@ namespace AdopteUnDev.BLL.Entities
         public string Tel { get; set; }
         public string Email { get; set; }
         public string Pswd { get; set; }
-
-        public ClientBllModel(int id, string lastName, string firstName, string compagny, string tel, string email)
-        {
-            Id = id;
-            LastName = lastName;
-            FirstName = firstName;
-            Compagny = compagny;
-            Tel = tel;
-            Email = email;
-        }
-
-        public ClientBllModel(string lastName, string firstName, string compagny, string tel, string email, string pswd)
-        {
-            LastName = lastName;
-            FirstName = firstName;
-            Compagny = compagny;
-            Tel = tel;
-            Email = email;
-            Pswd = pswd;
-        }
     }
 }

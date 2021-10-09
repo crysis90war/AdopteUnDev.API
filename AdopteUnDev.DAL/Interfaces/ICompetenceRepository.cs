@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace AdopteUnDev.DAL.Interfaces
 {
-    public interface ICompetenceDalRepository
+    public interface ICompetenceRepository : IRepositoryBase<CompetenceEntity, int>
     {
         // ADD
-        void AddCompetence(CompetenceDalEntity Competence);
+        void AddCompetence(CompetenceEntity Competence);
         // Delete
         void DeleteCompetence(int Id);
         // Get
-        IEnumerable<CompetenceDalEntity> GetAllCompetence();
+        IEnumerable<CompetenceEntity> GetAllCompetence();
     }
 }

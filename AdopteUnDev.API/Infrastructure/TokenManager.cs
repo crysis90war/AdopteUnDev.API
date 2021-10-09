@@ -1,5 +1,4 @@
-﻿using AdopteUnDev.API.Models;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -7,6 +6,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AdopteUnDev.API.Interfaces;
 
 namespace AdopteUnDev.API.Infrastructure
 {
@@ -28,8 +28,8 @@ namespace AdopteUnDev.API.Infrastructure
             //Création de l'objet contenant les informations à stocker dans le token
             Claim[] myClaims = new[]
             {
-                new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Sid, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.GivenName, $"{user.LastName} {user.FirstName}"),
                 new Claim(ClaimTypes.Role, user.GetType().Name)
             };

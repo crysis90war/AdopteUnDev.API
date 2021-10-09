@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AdopteUnDev.BLL.Interfaces
 {
-    public interface IContratBllRepository
+    public interface IContratService
     {
         /*public DeveloppeurBllModel GetByDevId(int Id);
         // GetByClientId

@@ -1,4 +1,5 @@
 ﻿using AdopteUnDev.BLL.Models;
+using AdopteUnDev.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace AdopteUnDev.BLL.Interfaces
 {
-    public interface ICompetenceBllRepository
+    public interface ICompetenceService : IRepositoryBase<CompetenceBllModel, int>
     {
-        // Add
-        void AddCompetence(CompetenceBllModel Competence);
+        // ADD
+        void AddCompetence(CompetenceBllModel model);
         // Delete
         void DeleteCompetence(int Id);
-        // GetAll
+        // Get
         IEnumerable<CompetenceBllModel> GetAllCompetence();
     }
 }

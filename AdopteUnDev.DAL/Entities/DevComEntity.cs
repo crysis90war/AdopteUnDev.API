@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdopteUnDev.DAL.Entities
 {
-    public class DevComDalEntity
+    public class DevComEntity
     {
         public int DeveloppeurId { get; set; }
         public int CompetenceId { get; set; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdopteUnDev.DAL.Interfaces
 {
-    public interface IContratDalRepository
+    public interface IContratRepository
     {
         /*// GetByDebeloperId
         public DeveloppeurDalEntity GetByDevId(int Id);
@@ -20,6 +20,6 @@ namespace AdopteUnDev.DAL.Interfaces
         // Decline
         void DeclineContrat(bool Decline, int Id);
         // Add Contrat
-        void AddContrat(ContratDalEntity contrat);
+        void AddContrat(ContratEntity contrat);
     }
 }

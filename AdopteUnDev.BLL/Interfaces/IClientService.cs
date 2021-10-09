@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdopteUnDev.BLL.Interfaces
 {
-    public interface IClientBllRepository
+    public interface IClientService
     {
         ClientBllModel LoginClient(string email, string password);
         void RegisterClient(ClientBllModel entity);

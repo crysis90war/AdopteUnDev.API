@@ -18,6 +18,7 @@ namespace Tools.Mappers
         private static TTo MapToInstance<TTo>(this object from, TTo result)
           where TTo : new()
         {
+            if (from is null) return default(TTo);
             // récupérer toutes les propriétes de cet objet 
             PropertyInfo[] toProperties = typeof(TTo).GetProperties();
             foreach (PropertyInfo toProperty in toProperties)

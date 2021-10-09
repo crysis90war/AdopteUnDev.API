@@ -1,0 +1,10 @@
+﻿CREATE PROCEDURE [dbo].[spCompetences_Insert]
+	@Nom NVARCHAR(50),
+	@Id INT = NULL OUTPUT
+AS
+BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO dbo.Competences (Nom) VALUES (@Nom)
+	SET @Id = SCOPE_IDENTITY();
+END
+GO

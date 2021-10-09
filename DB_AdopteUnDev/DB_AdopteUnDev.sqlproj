@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{43b8cb95-ebbf-4a35-a229-54bc132b9963}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -88,9 +88,11 @@
     <Build Include="programmability\Procedures\Competence\spGetAllCompetence.sql" />
     <Build Include="programmability\Procedures\Developpeur\spGetByDevCom.sql" />
     <Build Include="programmability\Procedures\Developpeur\spSetCompetenceDev.sql" />
+    <Build Include="programmability\Procedures\Competence\spCompetences_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DB_AdopteUnDev.publish.xml" />
+    <None Include="DB_AdopteUnDev.Crysis90war.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DB_AdopteUnDev.refactorlog" />

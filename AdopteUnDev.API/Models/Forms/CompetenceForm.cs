@@ -8,6 +8,5 @@ namespace AdopteUnDev.API.Models
     public class CompetenceForm
     {
         public string Nom { get; set; }
-
     }
 }

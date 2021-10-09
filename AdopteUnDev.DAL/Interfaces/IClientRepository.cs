@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace AdopteUnDev.DAL.Interfaces
 {
-    public interface IClientDalRepository
+    public interface IClientRepository
     {
-        ClientDalEntity LoginClient(string email, string password);
-        void RegisterClient(ClientDalEntity entity);
+        ClientEntity LoginClient(string email, string password);
+        void RegisterClient(ClientEntity entity);
     }
 }

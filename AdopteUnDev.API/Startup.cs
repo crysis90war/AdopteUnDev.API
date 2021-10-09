@@ -1,26 +1,19 @@
+using AdopteUnDev.API.Infrastructure;
 using AdopteUnDev.BLL.Interfaces;
-using AdopteUnDev.DAL.Repositories;
+using AdopteUnDev.BLL.Services;
 using AdopteUnDev.DAL.Interfaces;
+using AdopteUnDev.DAL.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Tools.Connection;
-using AdopteUnDev.BLL.Repositories;
-using AdopteUnDev.BLL.Services;
-using AdopteUnDev.API.Infrastructure;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Collections.Generic;
 using System.Text;
+using Tools.Connection;
 
 namespace AdopteUnDev.API
 {
@@ -56,7 +49,9 @@ namespace AdopteUnDev.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DemoRoleApi", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n                       Enter 'Bearer' [space] and then your token in the text input below.                      \r\n\r\nExample: 'Bearer 12345abcdef'",
+                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n
+                                    Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\n
+                                    Example: 'Bearer 12345abcdef'",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey,
@@ -72,8 +67,8 @@ namespace AdopteUnDev.API
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("ClientRequired", policy => policy.RequireAuthenticatedUser().RequireRole("Client"));
-                options.AddPolicy("DevelopperRequired", policy => policy.RequireAuthenticatedUser().RequireRole("Developper"));
+                options.AddPolicy("ClientRequired", policy => policy.RequireAuthenticatedUser().RequireRole("ClientModel"));
+                options.AddPolicy("DevelopperRequired", policy => policy.RequireAuthenticatedUser().RequireRole("DevelopperModel"));
             });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -98,29 +93,22 @@ namespace AdopteUnDev.API
             ! Chaque fois qu'un client va interroger le controller, l'instance de services va être crée pour toute la durée de l'appel !
             */
 
-            services.AddSingleton(sp => new Connection(Configuration.GetConnectionString("default")));
+            //services.AddSingleton(sp => new Connection(Configuration.GetConnectionString("default")));
+            services.AddSingleton(sp => new Connection(Configuration.GetConnectionString("SMD")));
             // token 
             services.AddSingleton<TokenManager>();
 
-            // Ici l'ajout de mes routes
-            // Exemple : services.AddScoped<IClientDalRepository, ClientDalRepository>();
+            /* REPOSITORIES */
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IDeveloppeurRepository, DeveloppeurRepository>();
+            services.AddScoped<IContratRepository, ContratRepository>();
+            services.AddScoped<ICompetenceRepository, CompetenceRepository>();
 
-            // injection de dependance pour le client 
-            services.AddScoped<IClientDalRepository, ClientDalRepository>();
-            services.AddScoped<IClientBllRepository, ClientBllRepository>();
-
-            // injection de dependance pour le contrat 
-            services.AddScoped<IContratDalRepository, ContratDalRepository>();
-            services.AddScoped<IContratBllRepository, ContratBllRepository>();
-
-            // Developpeur 
-            services.AddScoped<IDeveloppeurDalRepository, DeveloppeurDalRepository>();
-            services.AddScoped<IDeveloppeurBllRepository, DeveloppeurBllRepository>();
-
-            //Competences
-            services.AddScoped<ICompetenceDalRepository, CompetenceDalRepository>();
-            services.AddScoped<ICompetenceBllRepository, CompetenceBllRepository>();
-            
+            /* SERVICES */
+            services.AddScoped<IClientService, ClientService>();
+            services.AddScoped<IDeveloppeurService, DeveloppeurService>();
+            services.AddScoped<IContratService, ContratService>();
+            services.AddScoped<ICompetenceService, CompetenceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

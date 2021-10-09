@@ -1,4 +1,5 @@
-﻿using AdopteUnDev.API.Mapper;
+﻿using AdopteUnDev.API.Infrastructure;
+using AdopteUnDev.API.Mapper;
 using AdopteUnDev.API.Models;
 using AdopteUnDev.BLL.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -14,20 +15,28 @@ namespace AdopteUnDev.API.Controllers
     [ApiController]
     public class DeveloppeurController : ControllerBase
     {
-        private IDeveloppeurBllRepository _developpeService;
+        private IDeveloppeurService _developpeService;
+        private readonly TokenManager _tokenManager;
 
-        public DeveloppeurController(IDeveloppeurBllRepository developpeService)
+        public DeveloppeurController(IDeveloppeurService developpeService, TokenManager tokenManager)
         {
             _developpeService = developpeService;
+            _tokenManager = tokenManager;
         }
 
-        [HttpPost("registerDev")]
-        public IActionResult RegisterDev(DeveloppeurForm form)
+        [HttpPost(nameof(Register))]
+        public IActionResult Register(DeveloppeurForm form)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            _developpeService.RegisterDev(form.DevApiToDevBll());
+            _developpeService.RegisterDev(form.ApiToBll());
+            return Ok();
+        }
+
+        [HttpPost(nameof(Login))]
+        public IActionResult Login()
+        {
             return Ok();
         }
     }

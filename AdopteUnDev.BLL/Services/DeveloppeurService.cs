@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 
 namespace AdopteUnDev.BLL.Services
 {
-    public class DeveloppeurBllRepository : IDeveloppeurBllRepository
+    public class DeveloppeurService : IDeveloppeurService
     {
-        private readonly IDeveloppeurDalRepository _DeveloppeurDalRepository;
-        public DeveloppeurBllRepository(IDeveloppeurDalRepository service)
+        private readonly IDeveloppeurRepository _DeveloppeurDalRepository;
+        public DeveloppeurService(IDeveloppeurRepository service)
         {
             _DeveloppeurDalRepository = service;
         }
@@ -29,17 +29,17 @@ namespace AdopteUnDev.BLL.Services
 
         public DeveloppeurBllModel LoginDev(string email, string password)
         {
-            return _DeveloppeurDalRepository.LoginDev(email, password)?.DevDalToDevBll();
+            return _DeveloppeurDalRepository.LoginDev(email, password)?.DalToBll();
         }
 
         public void RegisterDev(DeveloppeurBllModel entity)
         {
-            _DeveloppeurDalRepository.RegisterDev(entity.DevBllToDevDal());
+            _DeveloppeurDalRepository.RegisterDev(entity.BllToDal());
         }
 
         public void SetCompetence(int Id, CompetenceBllModel Competence)
         {
-            _DeveloppeurDalRepository.SetCompetence(Id, Competence.CompetenceBllToCompetenceDal());
+            _DeveloppeurDalRepository.SetCompetence(Id, Competence.BllToDal());
         }
     }
 }

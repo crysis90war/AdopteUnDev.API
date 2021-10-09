@@ -10,33 +10,33 @@ using Tools.Connection;
 
 namespace AdopteUnDev.DAL.Repositories
 {
-    public class DeveloppeurDalRepository : IDeveloppeurDalRepository
+    public class DeveloppeurRepository : IDeveloppeurRepository
     {
         private readonly Connection _connection;
 
-        public DeveloppeurDalRepository(Connection connection)
+        public DeveloppeurRepository(Connection connection)
         {
             _connection = connection;
         }
 
-        public CompetenceDalEntity GetByCompetenceId(int Id)
+        public CompetenceEntity GetByCompetenceId(int Id)
         {
             Command command = new Command("SELECT * FROM Competence WHERE Id=@Id");
             command.AddParameter("Id", Id);
-            return _connection.ExecuteReader(command, dr => dr.DBToDALCompEntity()).FirstOrDefault();
+            return _connection.ExecuteReader(command, dr => dr.DbToCompetence()).FirstOrDefault();
         }
 
-        public DeveloppeurDalEntity LoginDev(string email, string password)
+        public DeveloppeurEntity LoginDev(string email, string password)
         {
             Command command = new Command("spClientLogin", true);
             command.AddParameter("email", email);
             command.AddParameter("password", password);
 
-            return _connection.ExecuteReader(command, dr => dr.DBToDALDevEntity()).SingleOrDefault();
+            return _connection.ExecuteReader(command, dr => dr.DbToDeveloppeur()).SingleOrDefault();
 
         }
 
-        public void RegisterDev(DeveloppeurDalEntity entity)
+        public void RegisterDev(DeveloppeurEntity entity)
         {
             Command command = new Command("dbo.spDeveloppeurRegister", true);
             command.AddParameter("LastName", entity.LastName);
@@ -48,7 +48,7 @@ namespace AdopteUnDev.DAL.Repositories
             _connection.ExecuteNonQuery(command);
         }
 
-        public void SetCompetence(int Id, CompetenceDalEntity Competence)
+        public void SetCompetence(int Id, CompetenceEntity Competence)
         {
             Command command = new Command("UPDATE Competences SET Nom = @Nom WHERE Id=@Id");
             command.AddParameter("Id", Id);

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdopteUnDev.BLL.Models
+namespace AdopteUnDev.DAL.Entities
 {
-    public class ContratBllModel
+    public class ContratEntity
     {
         public int Id { get; set; }
         public string Intituler { get; set; }

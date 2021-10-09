@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AdopteUnDev.BLL.Interfaces
 {
-    public interface IDeveloppeurBllRepository
+    public interface IDeveloppeurService
     {
         // Login
         DeveloppeurBllModel LoginDev(string email, string password);

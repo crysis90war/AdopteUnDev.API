@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace AdopteUnDev.BLL.Services
 {
-    public class ContratBllRepository : IContratBllRepository
+    public class ContratService : IContratService
     {
-        private readonly IContratDalRepository _contratDalRepository;
-        public ContratBllRepository(IContratDalRepository contratDalRepository)
+        private readonly IContratRepository _contratDalRepository;
+        public ContratService(IContratRepository contratDalRepository)
         {
             _contratDalRepository = contratDalRepository;
         }
@@ -30,7 +30,7 @@ namespace AdopteUnDev.BLL.Services
 
         public void AddContrat(ContratBllModel contrat)
         {
-            _contratDalRepository.AddContrat(contrat.ContratBllToContrattDal());
+            _contratDalRepository.AddContrat(contrat.BllToDal());
         }
 
         public void DeleteContrat(int Id)

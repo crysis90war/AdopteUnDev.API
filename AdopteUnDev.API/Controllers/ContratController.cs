@@ -14,9 +14,9 @@ namespace AdopteUnDev.API.Controllers
     [ApiController]
     public class ContratController : ControllerBase
     {
-        private IContratBllRepository _contratService;
+        private IContratService _contratService;
 
-        public ContratController(IContratBllRepository contratService)
+        public ContratController(IContratService contratService)
         {
             _contratService = contratService;
         }
@@ -53,7 +53,7 @@ namespace AdopteUnDev.API.Controllers
             {
                 return BadRequest("erreur validation");
             }
-            _contratService.AddContrat(contrat.ContratApiToContratBll());
+            _contratService.AddContrat(contrat.ApiToBll());
             return Ok();
         }
 
