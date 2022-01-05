@@ -23,6 +23,6 @@ jobs:
       
     - name: Deploy to IIS
       run: |
-        iisreset/stop
+        iisreset /stop
         Copy-Item C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API\* C:\inetpub\wwwroot\AdopteUnDev.API -Recurse -Force
-        iisreset/start
+        iisreset /start
