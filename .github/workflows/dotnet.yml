@@ -16,13 +16,13 @@ jobs:
         dotnet-version: '5.0.x'
       
     - name: Build with dotnet
-      run: dotnet build ${{env.DOTNET_ROOT}}/AdopteUnDev.API/AdopteUnDev.API/AdopteUnDev.API.csproj --configuration Release
+      run: dotnet build ${{env.DOTNET_ROOT}}\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API.csproj --configuration Release
     
     - name: dotnet publish
-      run: dotnet publish -c Release ${{env.DOTNET_ROOT}}/AdopteUnDev.API/AdopteUnDev.API/AdopteUnDev.API.csproj -o ${{env.DOTNET_ROOT}}/AdopteUnDev.API
+      run: dotnet publish -c Release ${{env.DOTNET_ROOT}}\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API.csproj -o ${{env.DOTNET_ROOT}}\AdopteUnDev.API
       
     - name: Deploy to IIS
       run: |
         iisreset/stop
-        Copy-Item ${{env.DOTNET_ROOT}}/AdopteUnDev.API/* C:\inetpub\wwwroot\AdopteUnDev.API -Recurse -Force
+        Copy-Item ${{env.DOTNET_ROOT}}\AdopteUnDev.API\* C:\inetpub\wwwroot\AdopteUnDev.API -Recurse -Force
         iisreset/start
