@@ -24,5 +24,8 @@ jobs:
     - name: Deploy to IIS
       run: |
         iisreset /stop
-        Copy-Item ${{env.DOTNET_ROOT}}\AdopteUnDev.API\* C:\inetpub\wwwroot\AdopteUnDev.API -Recurse -Force
+        Copy-Item ${{env.DOTNET_ROOT}}\AdopteUnDev.API\* C:\inetpub\wwwroot\adopte-un-dev -Recurse -Force
         iisreset /start
+
+    - name: Curl the website as adopte un dev
+      run: curl http://localhost/adopte-un-dev
