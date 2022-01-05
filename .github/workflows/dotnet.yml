@@ -1,0 +1,28 @@
+name: AdopteUnDev.API
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
+      
+    - name: Build with dotnet
+      run: dotnet build AdopteUnDev.API/AdopteUnDev.API/AdopteUnDev.API.csproj --configuration Release
+    
+    - name: dotnet publish
+      run: dotnet publish -c Release AdopteUnDev.API/AdopteUnDev.API/AdopteUnDev.API.csproj -o ${{env.DOTNET_ROOT}}/AdopteUnDev.API
+      
+    - name: Deploy to IIS
+      run: |
+        iisreset/stop
+        Copy-Item ${{env.DOTNET_ROOT}}/AdopteUnDev.API/* C:\inetpub\wwwroot\AdopteUnDev.API -Recurse -Force
+        iisreset/start
