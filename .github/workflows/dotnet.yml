@@ -1,4 +1,4 @@
-name: AdopteUnDev.API
+name: name: .NET Core Deploy to IIS
 
 on:
   push:
@@ -9,20 +9,20 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@master
-    - name: Setup .NET Core
+    - uses: actions/checkout@v2
+    - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
       
     - name: Build with dotnet
-      run: dotnet build C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API.csproj --configuration Release
+      run: dotnet build --configuration Release C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API.csproj
     
     - name: dotnet publish
-      run: dotnet publish -c Release C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API.csproj -o C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API
+      run: dotnet publish -c Release C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API.csproj -o ${{env.DOTNET_ROOT}}\AdopteUnDev.API
       
     - name: Deploy to IIS
       run: |
         iisreset /stop
-        Copy-Item C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API\* C:\inetpub\wwwroot\AdopteUnDev.API -Recurse -Force
+        Copy-Item ${{env.DOTNET_ROOT}}\AdopteUnDev.API\* C:\inetpub\wwwroot\AdopteUnDev.API -Recurse -Force
         iisreset /start
