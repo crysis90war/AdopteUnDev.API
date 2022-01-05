@@ -1,4 +1,4 @@
-name: name: .NET Core Deploy to IIS
+name: .NET Core Deploy to IIS
 
 on:
   push:
