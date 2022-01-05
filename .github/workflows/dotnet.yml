@@ -16,10 +16,10 @@ jobs:
         dotnet-version: '5.0.x'
       
     - name: Build with dotnet
-      run: dotnet build C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API.csproj --configuration Release
+      run: dotnet build C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API.csproj --configuration Release
     
     - name: dotnet publish
-      run: dotnet publish -c Release C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API.csproj -o C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API
+      run: dotnet publish -c Release C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API\AdopteUnDev.API.csproj -o C:\Users\Administrateur.WINSERV-2019.000\actions-runner\_work\AdopteUnDev.API
       
     - name: Deploy to IIS
       run: |
